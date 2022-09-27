@@ -115,7 +115,7 @@
 			- _Note_: If your internet connection is slow it may take a moment for you to see the 'db connected' console log. You will have to wait for the connection to establish before making requests to your routes. 
 	[x] Create a new collection in Postman called ExpressBloggerFinal, all requests for this project will go in this folder
 	[x] Add a new GET request to 'localhost:3000/blogs/get-one-example' and run it. You should see a response with one of your blog posts.
-- Commit your repo code and push to origin
+[x] Commit your repo code and push to origin
 	- 'git add .'
 	- 'git commit -m "initial commit"'
 	- 'git push'
@@ -136,11 +136,11 @@
 
 - Implement single document CRUD routes
 	- Implement a new GET route /blogs/get-one/:id
-		- This route should get the blog post id from the url params
-		- The route should then search mongo for the blog post whose id matches the url param 
-		- If the post was found, then the route should respond with an object containing success: true and the found blog post
-		- If the post was not found, then the route should respond with an object containing success: false and a message saying that the post was not found 
-		- _Stretch_: Add a condition to check to see that the id url param is defined and if it isn't, send back an object with success: false and an message saying that the blog id must be provided as a route parameter
+		[x] This route should get the blog post id from the url params
+		[x] The route should then search mongo for the blog post whose id matches the url param 
+		[x] If the post was found, then the route should respond with an object containing success: true and the found blog post
+		[x] If the post was not found, then the route should respond with an object containing success: false and a message saying that the post was not found 
+		[x] _Stretch_: Add a condition to check to see that the id url param is defined and if it isn't, send back an object with success: false and an message saying that the blog id must be provided as a route parameter
 	- Implement a new POST route /blogs/create-one
 		- This route should get the following fields for the new blog post from the incoming request body:
 			- title: {String}

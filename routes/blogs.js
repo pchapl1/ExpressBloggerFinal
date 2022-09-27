@@ -5,16 +5,97 @@ var router = express.Router();
 
 const {db} = require("../mongo")
 
-router.get('/get-one-example', async function(req, res, next) {
-    const blogPost = await db().collection("blogs").findOne({
-        id: {
-            $exists: true
+router.get('/get-one/:blogToGet', async function(req, res, next) {
+    try {
+
+        // get the blog id from request parameter
+        const blogId = req.params.blogToGet
+
+        // if blogID not in paremeter, return error
+        if (!blogId) {
+            res.json({
+                success: false,
+                message: 'blogId must be provided in the route parameter'
+            })
+            return
         }
-    })
-    res.json({
-        success: true,
-        post: blogPost
-    })
+
+        // search the db for the blog 
+        const blogPost = await db().collection("blogs").findOne({
+            id: blogId
+        })
+
+        // if blog not found, return error message
+        if (!blogPost) {
+            console.log('blog not found')
+            res.json({
+                success: false,
+                message: 'Blog not found'
+            })
+            return
+        }
+
+        res.json({
+            success: true,
+            post: blogPost
+        })
+
+
+    } catch (e) {
+        console.log(`error in get one: ${e}`)
+        res.json({
+            success: false,
+            error: e.toString()
+        })
+    }
+
+});
+
+
+router.post('/create-one', async function(req, res, next) {
+    try {
+
+        // get the blog id from request parameter
+        const blogToCreate = req.body
+
+        // if blogID not in paremeter, return error
+        if (!blogId) {
+            res.json({
+                success: false,
+                message: 'blogId must be provided in the route parameter'
+            })
+            return
+        }
+
+        // search the db for the blog 
+        const blogPost = await db().collection("blogs").findOne({
+            id: blogId
+        })
+
+        // if blog not found, return error message
+        if (!blogPost) {
+            console.log('blog not found')
+            res.json({
+                success: false,
+                message: 'Blog not found'
+            })
+            return
+        }
+
+        res.json({
+            success: true,
+            post: blogPost
+        })
+
+
+    } catch (e) {
+        console.log(`error in create one: ${e}`)
+        res.json({
+            success: false,
+            error: e.toString()
+        })
+    }
+
 });
 
 module.exports = router;
