@@ -150,19 +150,19 @@
 			- categories: {String[]}
 			- starRating: {Number}
 		- The following fields should be generated in the route and combined with the fields from the request body to create a new blog object:
-			- createdAt: {Date}
-			- lastModified: {Date}
-			- id: {String/uuid}
+			[x] createdAt: {Date}
+			[x] lastModified: {Date}
+			[x] id: {String/uuid}
 		- The route should insert the new blog object into the blog posts collection as a new post
 		- If the above was successful, the route should respond with an object containing success:true and the new blog object
 		- _Stretch_: 
 			- Add validation to the route to check the following conditions before inserting the blog object:
-				- title is defined, is a string, and is no longer than 30 characters
-				- text is defined and is a string
-				- author is defined and is a string
-				- if email is defined, it should be a string and must contain only a single @ symbol
-				- if categories is defined, it must be an array, it must have non-zero length and it must only contain strings
-				- if starRating is defined, it must be a number between 1 and 10
+				[x] title is defined, is a string, and is no longer than 30 characters
+				[x] text is defined and is a string
+				[x] author is defined and is a string
+				[x] if email is defined, it should be a string and must contain only a single @ symbol
+				[x] if categories is defined, it must be an array, it must have non-zero length and it must only contain strings
+				[x] if starRating is defined, it must be a number between 1 and 10
 			- If any of the validations fail, the route should respond with an object containing success: false and a validation error message describing which validation failed
 	- Implement a new PUT route /blogs/update-one/:id
 		- This route should get the blog post id from the url params and update the post containing that id with the incoming data from the request body
