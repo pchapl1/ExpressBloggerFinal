@@ -1,31 +1,53 @@
 
 
-const validateBlogData = (blogData) => {
+const validateBlogData = (blogData, updatingBlog=false) => {
 
     console.log('in blog validations')
 
     // check title is valid
-    if (!blogData.title || typeof(blogData.title) != 'string' || blogData.title.length >= 30) {
+    if (!updatingBlog){
+        if (!blogData.title) {
+            return{
+                isValid: false,
+                message: "title is required"
+            }
+        }
+        if (!blogData.text) {
+            return{
+                isValid: false,
+                message: "text is required"
+            }
+        }
+
+        if (!blogData.author) {
+            return{
+                isValid: false,
+                message: "author is required"
+            }
+        }
+        
+    }
+    if (typeof(blogData.title) != 'string' || blogData.title.length >= 30) {
         return {
             isValid : false,
-            message : 'title is required, must be a string and must be less than 30 characters'
+            message : 'must be a string and must be less than 30 characters'
         }
     }
 
 
     // check text is valid
-    if (!blogData.text || typeof(blogData.text) !== 'string') {
+    if (typeof(blogData.text) !== 'string') {
         return {
             isValid : false,
-            message : 'text is required and must be a string.'
+            message : 'text must be a string.'
         }
     }
 
         // check author is valid
-    if (!blogData.author || typeof(blogData.author) !== 'string') {
+    if (typeof(blogData.author) !== 'string') {
         return {
             isValid : false,
-            message : 'author is required and must be a string'
+            message : 'author must be a string'
         }
     }
 
